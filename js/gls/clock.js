@@ -18,18 +18,22 @@ GLS.ClockCalender = function ClockCalender(_svgContainer, _width, _height) {
   var innited=false;
 
   var colorScheme="Oranges";
+  var dateNow=new Date();
 
 
+
+  var xDays=new Date(dateNow.getFullYear(), dateNow.getMonth()+1, 0).getDate();
+  console.log("amountDays ="+xDays);
 
   var timeData=[
     {type:"month", value:2, startAngle:0, endAngle:0, radius:0, max:12},
-    {type:"day", value:25, startAngle:0, endAngle:0, radius:0, max:31},
+    {type:"day", value:25, startAngle:0, endAngle:0, radius:0, max:xDays},
     {type:"hours", value:12, startAngle:0, endAngle:0, radius:0, max:24},
     {type:"minutes", value:30, startAngle:0, endAngle:0, radius:0, max:60},
     {type:"seconds", value:30, startAngle:0, endAngle:0, radius:0, max:60}
   ];
 
-  var dateNow=new Date();
+ 
 
 
 
@@ -143,8 +147,6 @@ GLS.ClockCalender = function ClockCalender(_svgContainer, _width, _height) {
       angle =( _value  / _max )*(2*Math.PI)+offsetRad;
     }
 
-
-
     return angle;
 
   }
@@ -171,7 +173,6 @@ GLS.ClockCalender = function ClockCalender(_svgContainer, _width, _height) {
             for(var i=0; i<d.max; i++){
               _data.push( (i/d.max)*(Math.PI*2) );
             }
-
 
             var dots=gClockCalender.selectAll(".dots-color-"+d.type).data(_data);
 
