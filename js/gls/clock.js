@@ -118,6 +118,8 @@ GLS.ClockCalender = function ClockCalender(_svgContainer, _width, _height) {
 
     }else if(d.type=="month"){
       value=dateNow.getMonth();
+      //add 1 month, don't know why
+      value++;
     }else if(d.type=="day"){
       value=dateNow.getDate();
     }else if(d.type=="hours"){
@@ -140,6 +142,8 @@ GLS.ClockCalender = function ClockCalender(_svgContainer, _width, _height) {
     } else {
       angle =( _value  / _max )*(2*Math.PI)+offsetRad;
     }
+
+
 
     return angle;
 
